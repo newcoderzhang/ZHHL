@@ -6,6 +6,7 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 
@@ -24,6 +25,7 @@ public class GuideActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_guide);
         init();
         initData();
@@ -38,6 +40,7 @@ public class GuideActivity extends Activity {
             imageView.setBackgroundResource(mImageIds[i]);
             mImageViewList.add(imageView);
         }
+        viewPager.setAdapter(new GuideAdapter());
 
     }
     class GuideAdapter extends PagerAdapter{

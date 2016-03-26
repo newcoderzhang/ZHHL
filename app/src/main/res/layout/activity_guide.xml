@@ -18,7 +18,10 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="60dp"
+        android:padding="5dp"
+        android:background="@drawable/btn_guide_selector"
         android:text="体验一次"
+        android:textColor="@drawable/btn_guide_text_selector"
         />
 
 </RelativeLayout>
