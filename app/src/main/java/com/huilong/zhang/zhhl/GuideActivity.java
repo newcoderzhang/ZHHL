@@ -9,12 +9,14 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 
 public class GuideActivity extends Activity {
         private ViewPager viewPager;
         private Button button;
+        private LinearLayout linearLayout;
 
         private static  final  int[] mImageIds = new int[]{
                 R.mipmap.guide_1,
@@ -32,13 +34,31 @@ public class GuideActivity extends Activity {
     }
     private void init(){
         viewPager = (ViewPager) findViewById(R.id.vp_guade);
+        linearLayout = (LinearLayout) findViewById(R.id.point_group);
     }
     private void initData(){
+
         mImageViewList = new ArrayList<ImageView>();
+
         for (int i=0;i<mImageIds.length;i++){
             ImageView imageView = new ImageView(this);
             imageView.setBackgroundResource(mImageIds[i]);
             mImageViewList.add(imageView);
+        }
+
+
+
+        //动态添加小圆点
+        for (int i=0;i<mImageIds.length;i++){
+            View view = new View(this);
+            view.setBackgroundResource(R.drawable.shape_point_gray);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(10,10);
+            if(i>0){
+                params.leftMargin = 10;
+            }
+            view.setLayoutParams(params);
+
+            linearLayout.addView(view);
         }
         viewPager.setAdapter(new GuideAdapter());
 
