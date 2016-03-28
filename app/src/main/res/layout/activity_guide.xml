@@ -23,9 +23,6 @@
         android:text="体验一次"
         android:textColor="@drawable/btn_guide_text_selector"
         />
-
-
-
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -40,6 +37,7 @@
             android:orientation="horizontal"
             ></LinearLayout>
         <View
+            android:id="@+id/viewpoint"
             android:layout_width="10dp"
             android:layout_height="10dp"
             android:background="@drawable/shape_point_red"/>

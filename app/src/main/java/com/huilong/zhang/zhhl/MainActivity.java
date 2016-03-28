@@ -11,6 +11,8 @@ import android.view.animation.RotateAnimation;
 import android.view.animation.ScaleAnimation;
 import android.widget.LinearLayout;
 
+import com.huilong.zhang.zhhl.packages.PrefUtils;
+
 public class MainActivity extends Activity {
     private LinearLayout linearLayout;
 
@@ -51,8 +53,7 @@ public class MainActivity extends Activity {
             @Override
             public void onAnimationEnd(Animation animation) {
                 Log.d("SplishActivity","动画播放完了");
-                startActivity(new Intent(MainActivity.this,GuideActivity.class));
-                finish();
+                jumpNextPage();
 
             }
 
@@ -63,6 +64,19 @@ public class MainActivity extends Activity {
         });
 
         linearLayout.startAnimation(set);
+    }
+    /**
+     * 跳转到下一个页面
+     *
+     */
+    private  void jumpNextPage(){
+        boolean userGuide = PrefUtils.getBoolean(getApplicationContext(),"is_user_gudide_first_show",false);
+        if(!userGuide){
+            startActivity(new Intent(MainActivity.this,GuideActivity.class));
+        }else {
+            startActivity(new Intent(MainActivity.this,Main2Activity.class));
+        }
+        finish();
     }
 
 }
