@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
+import com.huilong.zhang.zhhl.fragments.ContentFragment;
+import com.huilong.zhang.zhhl.fragments.LeftMenuFragment;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.jeremyfeinstein.slidingmenu.lib.app.SlidingFragmentActivity;
 
@@ -21,10 +23,10 @@ public class Main2Activity extends SlidingFragmentActivity {
         SlidingMenu slidingMenu = getSlidingMenu();// 获取侧边栏对象
         slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);// 设置全屏触摸
         slidingMenu.setBehindOffset(200);// 设置预留屏幕的宽度
-        //initFragment();
+        initFragment();
     }
 
-   /* private void initFragment() {
+    private void initFragment() {
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();// 开启事务
 
@@ -35,5 +37,5 @@ public class Main2Activity extends SlidingFragmentActivity {
 
         transaction.commit();// 提交事务
         // Fragment leftMenuFragment = fm.findFragmentByTag(FRAGMENT_LEFT_MENU);
-    }*/
+    }
 }
