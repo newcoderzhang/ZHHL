@@ -17,16 +17,30 @@
         android:weightSum="1">
 
         <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:button="@null"
+            style="@style/BottomTabStyle"
+            android:drawableTop="@drawable/btn_tab_home_selector"
             android:text="首页"
-            android:layout_gravity="center_vertical"
-            android:padding="5dp"
-            android:drawablePadding="3dp"
-            android:textColor="#EE2C2C"
-            android:drawableTop="@mipmap/home_press"
-            android:layout_weight="0.08" />
+             />
+        <RadioButton
+            style="@style/BottomTabStyle"
+            android:drawableTop="@drawable/btn_tab_news_selector"
+            android:text="新闻中心"
+            />
+        <RadioButton
+            style="@style/BottomTabStyle"
+            android:drawableTop="@drawable/btn_tab_smart_selector"
+            android:text="智慧服务"
+            />
+        <RadioButton
+            style="@style/BottomTabStyle"
+            android:drawableTop="@drawable/btn_tab_gov_selector"
+            android:text="政务"
+            />
+        <RadioButton
+            style="@style/BottomTabStyle"
+            android:drawableTop="@drawable/btn_tab_setting_selector"
+            android:text="设置"
+            />
 
     </RadioGroup>
 
