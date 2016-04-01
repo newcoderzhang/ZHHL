@@ -17,6 +17,7 @@ public class SmartService extends BasePager {
 
     @Override
     public void initData() {
+        setSlidingMenuEnable(true);
         tvtitle.setText("智慧服务");
         TextView textView = new TextView(myActivity);
         textView.setText("首页");

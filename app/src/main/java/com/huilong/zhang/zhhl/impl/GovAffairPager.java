@@ -17,6 +17,7 @@ public class GovAffairPager extends BasePager {
 
     @Override
     public void initData() {
+        setSlidingMenuEnable(true);// 打开侧边栏
         tvtitle.setText("政务服务");
         TextView textView = new TextView(myActivity);
         textView.setText("人口管理");

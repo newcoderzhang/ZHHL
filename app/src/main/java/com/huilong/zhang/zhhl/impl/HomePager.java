@@ -17,6 +17,7 @@ public class HomePager extends BasePager {
 
     @Override
     public void initData() {
+        setSlidingMenuEnable(false);//关闭侧边栏
         tvtitle.setText("智慧北京");
         TextView textView = new TextView(myActivity);
         textView.setText("首页");
@@ -25,4 +26,6 @@ public class HomePager extends BasePager {
         textView.setGravity(Gravity.CENTER);
         frameLayout.addView(textView);
     }
+
+
 }

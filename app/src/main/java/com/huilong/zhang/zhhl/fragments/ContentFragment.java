@@ -2,6 +2,7 @@ package com.huilong.zhang.zhhl.fragments;
 
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioGroup;
@@ -21,8 +22,9 @@ import java.util.ArrayList;
 /**
  * Created by Mario on 3/29/16.
  */
-public class ContentFragment extends  BaseFragment {
+public class ContentFragment extends BaseFragment {
 
+    private static final String TAG = "ContentFragment";
     @ViewInject(R.id.rg_group)
     private RadioGroup radioGroup;
 
@@ -45,6 +47,7 @@ public class ContentFragment extends  BaseFragment {
         contentAdapter = new ContentAdapter();
         radioGroup.check(R.id.rb_home);
 
+
          /*for (int i = 0; i < 5; i++) {
          BasePager pager = new BasePager(activity);
              mpPagerlist.add(pager);
@@ -57,6 +60,53 @@ public class ContentFragment extends  BaseFragment {
 
 
         viewPager.setAdapter(contentAdapter);
+
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId) {
+                    case R.id.rb_home:
+                        viewPager.setCurrentItem(0);
+                        Log.v(TAG,"home");
+                        break;
+                    case R.id.rb_news:
+                        viewPager.setCurrentItem(1);
+                        Log.v(TAG,"rb_news");
+                        break;
+                    case R.id.rb_smart:
+                        viewPager.setCurrentItem(2);
+                        break;
+                    case R.id.rb_gov:
+                        viewPager.setCurrentItem(3);
+                        break;
+                    case R.id.rb_settings:
+                        viewPager.setCurrentItem(4);
+                        break;
+                    default:break;
+
+                }
+
+            }
+        });
+        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+
+                mpPagerlist.get(position).initData();
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+        mpPagerlist.get(0).initData();
+
 
     }
     class ContentAdapter extends PagerAdapter{
@@ -74,10 +124,12 @@ public class ContentFragment extends  BaseFragment {
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
             //return super.instantiateItem(container, position);
+
             BasePager basePager = mpPagerlist.get(position);
-            container.addView(basePager.mRootView);
-            basePager.initData();
-            return basePager.mRootView;
+            container.addView(mpPagerlist.get(position).mRootView);
+            //basePager.initData();
+            return mpPagerlist.get(position).mRootView;
+
         }
 
         @Override
