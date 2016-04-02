@@ -6,7 +6,11 @@ import android.view.Gravity;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.huilong.zhang.zhhl.Base.BasePager;
+import com.huilong.zhang.zhhl.Main2Activity;
+import com.huilong.zhang.zhhl.domain.NewsData;
+import com.huilong.zhang.zhhl.fragments.LeftMenuFragment;
 import com.huilong.zhang.zhhl.global.GlobalContants;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.exception.HttpException;
@@ -18,6 +22,8 @@ import com.lidroid.xutils.http.client.HttpRequest;
  * Created by Mario on 4/1/16.
  */
 public class NewcenterPager extends BasePager {
+    private String result;
+
     public NewcenterPager(Activity myActivity) {
         super(myActivity);
     }
@@ -33,6 +39,7 @@ public class NewcenterPager extends BasePager {
         textView.setGravity(Gravity.CENTER);
         frameLayout.addView(textView);
         getDataFromServer();
+
     }
 
     //从服务器获取数据
@@ -41,8 +48,10 @@ public class NewcenterPager extends BasePager {
         utils.send(HttpRequest.HttpMethod.POST, GlobalContants.CATEGORIES_URL, new RequestCallBack<String>() {
             @Override
             public void onSuccess(ResponseInfo<String> responseInfo) {
-                String result = responseInfo.result;
+                result = responseInfo.result;
                 System.out.println(result);
+                parseData(result);
+
 
             }
 
@@ -53,6 +62,18 @@ public class NewcenterPager extends BasePager {
 
             }
         });
+
+    }
+    protected  void parseData(String result){
+        Gson gson = new Gson();
+        NewsData newdData = gson.fromJson(result,NewsData.class);
+        System.out.print("解析结果 + " + newdData);
+
+        Main2Activity main2Activity = (Main2Activity) myActivity;
+        LeftMenuFragment leftMenuFragement = main2Activity.getLeftMenuFragement();
+        leftMenuFragement.setMenudata(newdData);
+
+
 
     }
 }

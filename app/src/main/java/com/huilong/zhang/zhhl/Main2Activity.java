@@ -1,6 +1,7 @@
 package com.huilong.zhang.zhhl;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
@@ -37,5 +38,10 @@ public class Main2Activity extends SlidingFragmentActivity {
 
         transaction.commit();// 提交事务
         // Fragment leftMenuFragment = fm.findFragmentByTag(FRAGMENT_LEFT_MENU);
+    }
+    public  LeftMenuFragment getLeftMenuFragement(){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        LeftMenuFragment fragmentByTag = (LeftMenuFragment) fragmentManager.findFragmentByTag(FRAGMENT_LEFT_MENU);
+        return fragmentByTag;
     }
 }
