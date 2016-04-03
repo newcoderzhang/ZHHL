@@ -77,7 +77,7 @@ public class NewcenterPager extends BasePager {
         leftMenuFragement.setMenudata(newdData);
 
         mPagers = new ArrayList<BaseMenuDetaiPager>();
-        mPagers.add(new NewsMenuDetailPager(main2Activity));
+        mPagers.add(new NewsMenuDetailPager(main2Activity,newdData.data.get(0).children));
         mPagers.add(new InteractMenuDetailPager(main2Activity));
         mPagers.add(new PhotoMenuDetailPager(main2Activity));
         mPagers.add(new TopicMenuDetailPager(main2Activity));
@@ -89,6 +89,7 @@ public class NewcenterPager extends BasePager {
         BaseMenuDetaiPager pager = mPagers.get(position);//获取当前显示的菜单详情
         frameLayout.removeAllViews();
         frameLayout.addView(pager.mRootView);//当前布局设置给真布局
+        pager.initData();
 
 
     }
