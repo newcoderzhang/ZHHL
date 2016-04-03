@@ -10,6 +10,7 @@ import com.huilong.zhang.zhhl.Base.BaseMenuDetaiPager;
 import com.huilong.zhang.zhhl.R;
 import com.huilong.zhang.zhhl.domain.NewsData;
 import com.huilong.zhang.zhhl.impl.TabDetailPager;
+import com.viewpagerindicator.TabPageIndicator;
 
 import java.util.ArrayList;
 
@@ -23,11 +24,16 @@ public class NewsMenuDetailPager extends BaseMenuDetaiPager{
 
     private ArrayList<NewsData.NewsTabData> mNewsTabData;// 页签网络数据
     private MenuDetailAdapter adapter;
+    private TabPageIndicator indicator;
 
     @Override
     public View initView() {
         View view = View.inflate(activity, R.layout.news_menu_detail,null);
         viewPager = (ViewPager) view.findViewById(R.id.vp_menu_detail);
+
+        //初始化自定义控件TabPageIndicator
+         indicator = (TabPageIndicator) view.findViewById(R.id.indicator);
+
         return view;
     }
 
@@ -49,10 +55,15 @@ public class NewsMenuDetailPager extends BaseMenuDetaiPager{
             mPagerList.add(tabDetailPager);
         }
         viewPager.setAdapter(adapter);
+        indicator.setViewPager(viewPager);
 
     }
 
     class MenuDetailAdapter extends PagerAdapter{
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return mNewsTabData.get(position).title;
+        }
 
         @Override
         public int getCount() {
