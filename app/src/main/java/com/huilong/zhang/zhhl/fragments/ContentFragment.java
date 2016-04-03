@@ -138,4 +138,8 @@ public class ContentFragment extends BaseFragment {
             container.removeView((View) object);
         }
     }
+
+    public NewcenterPager getNewCenperPager(){
+        return (NewcenterPager) mpPagerlist.get(1);
+    }
 }
