@@ -845,7 +845,7 @@
                     "startOffset": 5399,
                     "endLine": 54,
                     "endColumn": 12,
-                    "endOffset": 5594
+                    "endOffset": 5576
                 },
                 "from": {
                     "file": "/Users/zhang/MyAppExercise/ZHHL/indicatorlibrary/build/intermediates/bundles/debug/res/values/values.xml",
@@ -855,7 +855,7 @@
                         "startOffset": 5399,
                         "endLine": 54,
                         "endColumn": 12,
-                        "endOffset": 5594
+                        "endOffset": 5576
                     }
                 }
             },
@@ -863,20 +863,20 @@
                 "to": {
                     "startLine": 55,
                     "startColumn": 4,
-                    "startOffset": 5599,
+                    "startOffset": 5581,
                     "endLine": 58,
                     "endColumn": 12,
-                    "endOffset": 5847
+                    "endOffset": 5829
                 },
                 "from": {
                     "file": "/Users/zhang/MyAppExercise/ZHHL/indicatorlibrary/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
                         "startLine": 55,
                         "startColumn": 4,
-                        "startOffset": 5599,
+                        "startOffset": 5581,
                         "endLine": 58,
                         "endColumn": 12,
-                        "endOffset": 5847
+                        "endOffset": 5829
                     }
                 }
             },
@@ -884,20 +884,20 @@
                 "to": {
                     "startLine": 59,
                     "startColumn": 4,
-                    "startOffset": 5852,
+                    "startOffset": 5834,
                     "endLine": 60,
                     "endColumn": 12,
-                    "endOffset": 5886
+                    "endOffset": 5868
                 },
                 "from": {
                     "file": "/Users/zhang/MyAppExercise/ZHHL/indicatorlibrary/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
                         "startLine": 59,
                         "startColumn": 4,
-                        "startOffset": 5852,
+                        "startOffset": 5834,
                         "endLine": 60,
                         "endColumn": 12,
-                        "endOffset": 5886
+                        "endOffset": 5868
                     }
                 }
             },
@@ -905,20 +905,20 @@
                 "to": {
                     "startLine": 61,
                     "startColumn": 4,
-                    "startOffset": 5891,
+                    "startOffset": 5873,
                     "endLine": 64,
                     "endColumn": 12,
-                    "endOffset": 6076
+                    "endOffset": 6058
                 },
                 "from": {
                     "file": "/Users/zhang/MyAppExercise/ZHHL/indicatorlibrary/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
                         "startLine": 61,
                         "startColumn": 4,
-                        "startOffset": 5891,
+                        "startOffset": 5873,
                         "endLine": 64,
                         "endColumn": 12,
-                        "endOffset": 6076
+                        "endOffset": 6058
                     }
                 }
             },
@@ -926,20 +926,20 @@
                 "to": {
                     "startLine": 65,
                     "startColumn": 4,
-                    "startOffset": 6081,
-                    "endLine": 75,
+                    "startOffset": 6063,
+                    "endLine": 76,
                     "endColumn": 12,
-                    "endOffset": 6678
+                    "endOffset": 6707
                 },
                 "from": {
                     "file": "/Users/zhang/MyAppExercise/ZHHL/indicatorlibrary/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
                         "startLine": 65,
                         "startColumn": 4,
-                        "startOffset": 6081,
-                        "endLine": 75,
+                        "startOffset": 6063,
+                        "endLine": 76,
                         "endColumn": 12,
-                        "endOffset": 6678
+                        "endOffset": 6707
                     }
                 }
             }
