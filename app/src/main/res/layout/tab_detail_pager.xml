@@ -26,6 +26,13 @@
                 android:textColor="#fff"
                 android:textSize="16sp"
                 />
+
+            <com.viewpagerindicator.CirclePageIndicator
+                android:id="@+id/indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:padding="10dip"/>
         </RelativeLayout>
 
     </RelativeLayout>

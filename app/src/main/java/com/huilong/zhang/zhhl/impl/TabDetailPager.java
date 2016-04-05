@@ -23,6 +23,7 @@ import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest;
 import com.lidroid.xutils.view.annotation.ViewInject;
+import com.viewpagerindicator.CirclePageIndicator;
 
 import java.util.ArrayList;
 
@@ -48,6 +49,9 @@ public class TabDetailPager extends BaseMenuDetaiPager  implements ViewPager.OnP
     private TopNewsAdapter topnewadapter;
 
     private BitmapUtils bitmapUtils;
+
+    @ViewInject(R.id.indicator)
+    private CirclePageIndicator mindicator;
 
     private ArrayList<TabData.TopNewsData> mTopNewsList;// 头条新闻数据集合
     public TabDetailPager(Activity activity, NewsData.NewsTabData newsTabData) {
@@ -100,6 +104,8 @@ public class TabDetailPager extends BaseMenuDetaiPager  implements ViewPager.OnP
         mTopNewsList = tabDataprase.data.topnews;
         topnewadapter = new TopNewsAdapter();
         mviewpager.setAdapter(topnewadapter);
+        mindicator.setViewPager(mviewpager);
+        mindicator.setSnap(true);//支持快照模式
 
 
 
