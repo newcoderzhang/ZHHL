@@ -24,10 +24,12 @@ import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
+import java.util.ArrayList;
+
 /**页签详情页
  * Created by Mario on 4/3/16.
  */
-public class TabDetailPager extends BaseMenuDetaiPager {
+public class TabDetailPager extends BaseMenuDetaiPager  implements ViewPager.OnPageChangeListener{
 
 
 
@@ -40,10 +42,14 @@ public class TabDetailPager extends BaseMenuDetaiPager {
     @ViewInject(R.id.vp_news)
     private ViewPager mviewpager;
 
+    @ViewInject(R.id.title_text)
+    private TextView texttitle;
+
     private TopNewsAdapter topnewadapter;
 
     private BitmapUtils bitmapUtils;
 
+    private ArrayList<TabData.TopNewsData> mTopNewsList;// 头条新闻数据集合
     public TabDetailPager(Activity activity, NewsData.NewsTabData newsTabData) {
         super(activity);
         this.mTabData = newsTabData;
@@ -55,6 +61,7 @@ public class TabDetailPager extends BaseMenuDetaiPager {
 
         View view = View.inflate(activity, R.layout.tab_detail_pager,null);
         ViewUtils.inject(this,view);
+        mviewpager.setOnPageChangeListener(this);
 
         return view;
 
@@ -90,9 +97,27 @@ public class TabDetailPager extends BaseMenuDetaiPager {
         Gson gson = new Gson();
         tabDataprase = gson.fromJson(tapresult, TabData.class);
         System.out.println("页面详情" + tabDataprase);
+        mTopNewsList = tabDataprase.data.topnews;
         topnewadapter = new TopNewsAdapter();
         mviewpager.setAdapter(topnewadapter);
 
+
+
+    }
+
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+        texttitle.setText(mTopNewsList.get(position).title);
+
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
 
 
     }
