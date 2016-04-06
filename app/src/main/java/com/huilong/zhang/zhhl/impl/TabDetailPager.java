@@ -5,7 +5,9 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,7 +48,11 @@ public class TabDetailPager extends BaseMenuDetaiPager  implements ViewPager.OnP
     @ViewInject(R.id.title_text)
     private TextView texttitle;
 
+    @ViewInject(R.id.lv_list)
+    private ListView listView;
+
     private TopNewsAdapter topnewadapter;
+    private NewsAdapter newsAdapter;
 
     private BitmapUtils bitmapUtils;
 
@@ -54,6 +60,7 @@ public class TabDetailPager extends BaseMenuDetaiPager  implements ViewPager.OnP
     private CirclePageIndicator mindicator;
 
     private ArrayList<TabData.TopNewsData> mTopNewsList;// 头条新闻数据集合
+    private ArrayList<TabData.TabNewsData> mTapNewsList;
     public TabDetailPager(Activity activity, NewsData.NewsTabData newsTabData) {
         super(activity);
         this.mTabData = newsTabData;
@@ -102,7 +109,10 @@ public class TabDetailPager extends BaseMenuDetaiPager  implements ViewPager.OnP
         tabDataprase = gson.fromJson(tapresult, TabData.class);
         System.out.println("页面详情" + tabDataprase);
         mTopNewsList = tabDataprase.data.topnews;
+        mTapNewsList = tabDataprase.data.news;
         topnewadapter = new TopNewsAdapter();
+        newsAdapter = new NewsAdapter();
+        listView.setAdapter(newsAdapter);
         mviewpager.setAdapter(topnewadapter);
         mindicator.setViewPager(mviewpager);
         mindicator.setSnap(true);//支持快照模式
@@ -161,5 +171,53 @@ public class TabDetailPager extends BaseMenuDetaiPager  implements ViewPager.OnP
             container.removeView((View) object);
             //super.destroyItem(container, position, object);
         }
+    }
+    class NewsAdapter extends BaseAdapter{
+        private BitmapUtils utils;
+
+        public NewsAdapter() {
+            utils = new BitmapUtils(activity);
+        }
+
+        @Override
+        public int getCount() {
+            return mTapNewsList.size();
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return mTapNewsList.get(position);
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            ViewHolder viewHolder;
+            if(convertView == null){
+               convertView =View.inflate(activity,R.layout.list_news_item,null);
+                viewHolder = new ViewHolder();
+                viewHolder.imageView = (ImageView) convertView.findViewById(R.id.iv_pic);
+                viewHolder.tvTitle = (TextView) convertView.findViewById(R.id.tv_title);
+                viewHolder.tvDate = (TextView) convertView.findViewById(R.id.tv_date);
+                convertView.setTag(viewHolder);
+            }else {
+                viewHolder = (ViewHolder) convertView.getTag();
+            }
+            TabData.TabNewsData item = (TabData.TabNewsData) getItem(position);
+            viewHolder.tvTitle.setText(item.title);
+            viewHolder.tvDate.setText(item.puddate);
+            utils.display(viewHolder.imageView,item.listimage);
+
+            return convertView;
+        }
+    }
+    static class ViewHolder{
+        public  ImageView imageView;
+        public  TextView tvTitle;
+        public  TextView tvDate;
     }
 }
